@@ -15,6 +15,8 @@ Serial# 1234998871109
 
 **/
 
+var args = {headers: {"Host":"localapi"}};
+
 var machine = "http://54.215.248.99:8000/gumball";
 var endpoint = "http://54.215.248.99:8000/order";
 
@@ -86,7 +88,7 @@ var page = function( req, res, state, ts, status ) {
 
     var client = new Client();
             var count = "";
-            client.get( machine, 
+            client.get( machine, args,
                 function(data, response_raw){
                     console.log(data);
                     //for(var key in data) {
@@ -124,7 +126,7 @@ var order = function( req, res, state, ts ) {
 
     var client = new Client();
             var count = 0;
-            client.post( endpoint, 
+            client.post( endpoint, args,
                 function(data, response_raw) {
                     jsdata = JSON.parse(data)
                     for(var key in jsdata) {
